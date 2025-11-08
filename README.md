@@ -56,8 +56,10 @@ ps aux | grep sshd | grep -v 'grep' | grep -v '^root' | awk '{print $2}' | xargs
 
 # kill a process
 kill -9 $PROCESS_ID
-
-
-
 ```
 
+In the file `/etc/ssh/sshd_config`, you can add a line like this:
+```
+AllowUsers user1 user2 user3
+```
+This line will mean that only user1, user2, and user3 can login remotely over ssh.
