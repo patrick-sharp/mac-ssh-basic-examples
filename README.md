@@ -59,7 +59,18 @@ kill -9 $PROCESS_ID
 ```
 
 In the file `/etc/ssh/sshd_config`, you can add a line like this:
+
 ```
 AllowUsers user1 user2 user3
 ```
 This line will mean that only user1, user2, and user3 can login remotely over ssh.
+
+If you have a specific user you want to isolate to a directory, you can add this:
+
+```
+Match User user1
+       ChrootDirectory /path/to/jail
+       ForceCommand internal-sftp
+       AllowTcpForwarding no
+       X11Forwarding no
+```
